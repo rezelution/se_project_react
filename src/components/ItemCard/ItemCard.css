@@ -1,0 +1,33 @@
+.ItemCard {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 323px;
+  height: 326px;
+  display: flex;
+  justify-content: center;
+}
+
+.ItemCard__title {
+  height: 24px;
+  padding: 2px 12px;
+  background-color: #fff;
+  margin: 0;
+  font-family: "CabinetGrotesk-Bold";
+  font-size: 16px;
+  font-weight: 700;
+  white-space: nowrap;
+  display: inline;
+  border-radius: 4px;
+  position: absolute;
+  top: 15px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.ItemCard__image {
+  object-fit: cover;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 19px;
+  border: 1px solid;
+}

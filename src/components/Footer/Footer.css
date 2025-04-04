@@ -1,0 +1,11 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  padding: 0 20px 24px;
+  justify-content: space-between;
+  margin: 0 20px 0;
+}
+
+.footer__captions {
+  margin: 0px;
+}

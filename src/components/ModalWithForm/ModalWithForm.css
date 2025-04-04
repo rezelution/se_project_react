@@ -1,0 +1,128 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0000004d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+.modal__close {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  border-style: none;
+  padding: 0;
+  margin: 0;
+  height: 20px;
+  background: transparent;
+}
+
+.modal__content {
+  background-color: #fff;
+  position: relative;
+  padding: 28px 28px 36px;
+  max-width: 496px;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.modal__input {
+  display: block;
+  width: 100%;
+  margin: 16px 0 29px;
+  padding: 0 0 4px;
+  border-style: none;
+  border-bottom: 1px solid;
+}
+
+.modal__label {
+  margin: 0;
+  font-weight: 700px;
+  line-height: 20px;
+}
+
+.modal__label_type_radio {
+  display: flex;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.5);
+  /*added below*/
+
+  transition: color 0.3s;
+}
+
+.modal__legend {
+  margin: 0 0 12px;
+  font-weight: 700px;
+  line-height: 20px;
+}
+
+.modal__opened {
+  visibility: visible;
+}
+
+.modal__radio-buttons {
+  border: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__radio-input {
+  margin-right: 8px;
+}
+
+.modal__radio-input:checked + .modal__label_type_radio {
+  color: #000000;
+}
+
+.modal__radio-input:checked {
+  accent-color: #000000;
+}
+
+.modal__radio-option {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.modal__submit {
+  padding: 8px 16px;
+  background-color: #0000004d;
+  color: #fff;
+  white-space: nowrap;
+  display: inline-block;
+  height: 36px;
+  margin: 32px 0 0;
+  width: auto;
+  text-align: center;
+  align-self: flex-start;
+  border-radius: 4px;
+  border-style: none;
+}
+
+.modal__submit:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal__submit:focus {
+  background-color: #000000;
+}
+
+.modal__title {
+  margin: 0 0 24px;
+  font-weight: 700px;
+  line-height: 20px;
+}

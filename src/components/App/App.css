@@ -1,0 +1,15 @@
+.page {
+  background-color: #f3f3f3;
+  font-family: "CabinetGrotesk-Medium";
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.page__content {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 20px;
+}

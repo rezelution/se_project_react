@@ -1,0 +1,59 @@
+.itemModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0000004d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+.itemModal__caption {
+  font-size: 20px;
+  line-height: 24px;
+  margin: 0 0 12px 0;
+  font-weight: 700px;
+}
+
+.itemModal__close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  border-style: none;
+  padding: 0;
+  margin: 0;
+  height: 20px;
+  background: transparent;
+}
+
+.itemModal__content {
+  max-width: 498px;
+  max-height: 610px;
+  position: relative;
+  background-color: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.itemModal__footer {
+  padding: 0 32px 32px;
+}
+
+.itemModal__image {
+  width: 498px;
+  height: 498px;
+  margin-bottom: 20px;
+}
+
+.itemModal__opened {
+  visibility: visible;
+}
+
+.itemModal__weather {
+  margin: 0;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700px;
+}
