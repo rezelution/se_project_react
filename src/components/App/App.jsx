@@ -79,7 +79,7 @@ function App() {
           />
         </label>
         <fieldset className="modal__radio-buttons">
-          <legend className="modal__legend">Select the weather type</legend>
+          <legend className="modal__legend">Select the weather type:</legend>
 
           <div className="modal__radio-option">
             <input
