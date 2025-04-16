@@ -1,5 +1,5 @@
 import "./Header.css";
-
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 //images need to be added this way
 import logo from "../../assets/Logo.svg";
 import avatar from "../../assets/avatar.png";
@@ -16,6 +16,7 @@ function Header({ handleAddClick, weatherData }) {
       <p className="header__date-and-location">
         {currentDate}, {weatherData.city}
       </p>
+      <ToggleSwitch className="header__toggleSwitch" />
       <button
         onClick={handleAddClick}
         type="button"
