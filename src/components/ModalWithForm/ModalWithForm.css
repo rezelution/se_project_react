@@ -62,8 +62,9 @@
 
 .modal__legend {
   margin: 0 0 12px;
-  font-weight: 700;
-  line-height: 20px;
+  font-family: var(--font-family-cabinet);
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-bold);
 }
 
 .modal__opened {
@@ -111,16 +112,23 @@
   border-style: none;
 }
 
-.modal__submit:hover {
-  background: rgba(0, 0, 0, 0.6);
-}
-
-.modal__submit:focus {
-  background-color: #000000;
-}
-
 .modal__title {
   margin: 0 0 24px;
-  font-weight: 700;
-  line-height: 20px;
+  font-family: var(--font-family-cabinet);
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-bold);
+}
+
+.modal__submit_valid {
+  background-color: #000;
+  cursor: pointer;
+}
+
+.modal__submit_valid:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal__submit_invalid {
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: not-allowed;
 }

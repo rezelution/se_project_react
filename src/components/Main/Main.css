@@ -13,8 +13,8 @@
 }
 
 .MainCards__text {
-  font-family: "CabinetGrotesk-Bold";
-  font-size: 20px;
-  font-weight: 700;
+  font-family: var(--font-family-cabinet);
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-bold);
   line-height: 1;
 }

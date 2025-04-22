@@ -1,0 +1,33 @@
+.clothes-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.clothes-section__heading {
+  display: flex;
+  font-family: var(--font-family-cabinet);
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-bold);
+  margin-top: -5px;
+}
+
+.clothes-section__list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.clothes-section-btn {
+  margin-left: 20px;
+  font-family: var(--font-family-cabinet);
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  border-style: none;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}

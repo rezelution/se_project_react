@@ -1,10 +1,10 @@
 .page {
   background-color: #f3f3f3;
-  font-family: "CabinetGrotesk-Medium", Arial, Helvetica, sans-serif;
-  font-weight: 500;
+  font-family: var(--font-family-cabinet);
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-medium);
   font-display: swap;
   font-style: normal;
-  font-size: 16px;
   line-height: 1.5;
 }
 
@@ -15,4 +15,5 @@
   min-width: 100vh;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }

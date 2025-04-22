@@ -8,11 +8,10 @@ function ModalWithForm({
   isOpen,
   handleCloseClick,
   onSubmit,
+  isValid,
 }) {
-  return ( 
-    <div
-      className={`modal ${isOpen && "modal__opened"}`}
-    >
+  return (
+    <div className={`modal ${isOpen && "modal__opened"}`}>
       <div className="modal__content">
         <h2 className="modal__title">{title}</h2>
         <button
@@ -24,8 +23,15 @@ function ModalWithForm({
         </button>
         <form onSubmit={onSubmit} className="modal__form">
           {children}
-          <button type="submit" className="modal__submit">
-            {buttonText}
+          <button
+            type="submit"
+            className={`modal__submit ${
+              isValid ? "modal__submit_valid" : "modal__submit_invalid"
+            }`}
+            disabled={!isValid}
+          >
+            {" "}
+            {buttonText}{" "}
           </button>
         </form>
       </div>

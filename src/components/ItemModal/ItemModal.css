@@ -12,10 +12,12 @@
 }
 
 .itemModal__caption {
-  font-size: 20px;
+  font-family: var(--font-family-cabinet);
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-bold);
   line-height: 24px;
   margin: 0 0 12px 0;
-  font-weight: 700px;
+  font-weight: 700;
 }
 
 .itemModal__close {
@@ -39,6 +41,9 @@
 }
 .itemModal__footer {
   padding: 0 32px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .itemModal__image {
@@ -53,7 +58,19 @@
 
 .itemModal__weather {
   margin: 0;
-  font-size: 20px;
+  font-family: var(--font-family-cabinet);
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-bold);
   line-height: 24px;
-  font-weight: 700px;
+}
+
+.itemModal__delete-btn {
+  font-family: var(--font-family-cabinet);
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  border-style: none;
+  background-color: transparent;
+  color: #ff4d00;
+  cursor: pointer;
 }

@@ -3,9 +3,12 @@
   flex-direction: row;
   padding: 0 0 24px;
   justify-content: space-between;
-  margin: auto 0 0;
+  margin-top: auto;
 }
 
 .footer__captions {
   margin: 0px;
+  font-family: var(--font-family-cabinet);
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-medium);
 }

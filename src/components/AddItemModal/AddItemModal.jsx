@@ -9,6 +9,9 @@ export default function AddItemModal({
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
+  const isFormValid = () => {
+    return name.length > 0 && imageUrl.length > 0 && weather.length > 0;
+  };
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -29,7 +32,6 @@ export default function AddItemModal({
     setImageUrl("");
     setWeather("");
   };
-
   return (
     <ModalWithForm
       title="New garment"
@@ -37,6 +39,7 @@ export default function AddItemModal({
       isOpen={isOpen}
       handleCloseClick={handleCloseClick}
       onSubmit={handleSubmit}
+      isValid={isFormValid()}
     >
       <label htmlFor="name" className="modal__label">
         Name

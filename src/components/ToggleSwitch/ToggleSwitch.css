@@ -27,8 +27,8 @@
   position: absolute;
   top: 5px;
   color: #7e7e7e;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-bold);
 }
 
 .toggle-switch__text_F {
@@ -45,4 +45,24 @@
 
 .toggle-switch__text_color_white {
   color: #fff;
+}
+
+.toggle-switch:hover
+  .toggle-switch__checkbox:not(:checked)
+  ~ .toggle-switch__circle {
+  transform: translateX(2px);
+}
+
+.toggle-switch:hover
+  .toggle-switch__checkbox:not(:checked)
+  ~ .toggle-switch__text_F {
+  transform: translateX(2px);
+}
+
+.toggle-switch:hover .toggle-switch__checkbox:checked ~ .toggle-switch__circle {
+  transform: translateX(-2px); /* applies on top of the left: 28px */
+}
+
+.toggle-switch:hover .toggle-switch__checkbox:checked ~ .toggle-switch__text_C {
+  transform: translateX(-2px);
 }
