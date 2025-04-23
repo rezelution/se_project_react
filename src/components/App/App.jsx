@@ -9,7 +9,7 @@ import { coordinates } from "../../utils/constants";
 import { APIkey } from "../../utils/constants";
 import { filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
-import CurrentTemperatureUnitContext from "../Context/CurrentTemperatureUnitContext";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
