@@ -1,4 +1,4 @@
-.confirmation-modal {
+.modal_type_confirmation {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,15 +11,17 @@
   visibility: hidden;
 }
 
-.confirmation-modal__opened {
+.modal__opened {
   visibility: visible;
 }
 
-.confirmation-modal__warning {
+/* Update the content wrapper to match your original styling */
+.modal_type_confirmation .modal__content {
   background-color: white;
   border-radius: 20px;
   text-align: center;
   width: 670px;
+  max-width: 670px;
   display: flex;
   flex-direction: column;
   padding: 60px 150px;
@@ -27,10 +29,7 @@
   position: relative;
 }
 
-.confirmation-modal__warning-btn {
-  position: absolute;
-}
-
+/* Keep these classes as they are since they're used for the internal content */
 .confirmation-modal__text p {
   margin: 0;
   padding: 0;

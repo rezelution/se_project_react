@@ -31,13 +31,13 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
 
   const handleAddClick = () => {
-    console.log("Add button clicked"); //added this
     setActiveModal("add-garment");
   };
 
@@ -55,6 +55,7 @@ function App() {
   };
 
   const handleItemDelete = () => {
+    setIsLoading(true);
     deleteItems(selectedCard._id)
       .then(() => {
         setClothingItems(
@@ -62,7 +63,10 @@ function App() {
         );
         closeActiveModal();
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
@@ -70,6 +74,7 @@ function App() {
       console.error("Missing required fields:", { name, imageUrl, weather });
       return;
     }
+    setIsLoading(true);
     addItems({ name, imageUrl, weather })
       .then((data) => {
         console.log("Server response:", data);
@@ -78,6 +83,9 @@ function App() {
       })
       .catch((error) => {
         console.error("Error adding item:", error);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -105,6 +113,24 @@ function App() {
       })
       .catch(console.error);
   }, []);
+
+  useEffect(() => {
+    if (!activeModal) return; // stop the effect not to add the listener if there is no active modal
+
+    const handleEscClose = (e) => {
+      // define the function inside useEffect not to lose the reference on rerendering
+      if (e.key === "Escape") {
+        closeActiveModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      //clean up function for removing the listener
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]); // this is a dependencies array used to watch activeModal here
 
   return (
     <CurrentTemperatureUnitContext.Provider
@@ -141,19 +167,22 @@ function App() {
         </div>
         <AddItemModal
           isOpen={activeModal === "add-garment"}
-          handleCloseClick={closeActiveModal}
+          onClose={closeActiveModal}
           onAddItemModalSubmit={handleAddItemModalSubmit}
+          buttonText={isLoading ? "Saving..." : "Save"}
         />
         <ItemModal
           isOpen={activeModal === "preview"}
           card={selectedCard}
-          handleCloseClick={closeActiveModal}
-          handleDeleteClick={handleDeleteClick}
+          onClose={closeActiveModal}
+          onDeleteClick={handleDeleteClick}
+          buttonText={isLoading ? "Saving..." : "Save"}
         />
         <ConfirmationModal
           isOpen={activeModal === "delete-item"}
           handleCloseClick={closeActiveModal}
           handleDelete={handleItemDelete}
+          buttonText={isLoading ? "Saving..." : "Save"}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>

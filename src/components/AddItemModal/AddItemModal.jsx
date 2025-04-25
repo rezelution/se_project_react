@@ -1,67 +1,70 @@
-import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useState } from "react";
+import { useFormAndValidation } from "../../hooks/useFormAndValidation";
+
 export default function AddItemModal({
   isOpen,
-  handleCloseClick,
+  onClose,
   onAddItemModalSubmit,
 }) {
-  const [name, setName] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [weather, setWeather] = useState("");
-  const isFormValid = () => {
-    return name.length > 0 && imageUrl.length > 0 && weather.length > 0;
-  };
-
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-
-  const handleImageUrlChange = (e) => {
-    setImageUrl(e.target.value);
-  };
-
-  const handleWeatherChange = (e) => {
-    setWeather(e.target.value);
-  };
+  const { values, handleChange, errors, isValid, resetForm } =
+    useFormAndValidation();
 
   const handleSubmit = (e) => {
+    if (!e.target.checkValidity()) {
+      e.preventDefault();
+      return;
+    }
     e.preventDefault();
-    onAddItemModalSubmit({ name, imageUrl, weather });
-    setName("");
-    setImageUrl("");
-    setWeather("");
+    if (isValid) {
+      onAddItemModalSubmit({
+        name: values.name,
+        imageUrl: values.imageUrl,
+        weather: values.weather,
+      });
+      resetForm();
+    }
   };
+
   return (
     <ModalWithForm
       title="New garment"
       buttonText="Add garment"
       isOpen={isOpen}
-      handleCloseClick={handleCloseClick}
+      onClose={onClose}
       onSubmit={handleSubmit}
-      isValid={isFormValid()}
+      isValid={isValid}
+      name="add-item"
     >
       <label htmlFor="name" className="modal__label">
         Name
         <input
           type="text"
+          name="name"
           className="modal__input"
           id="name"
           placeholder="Name"
-          onChange={handleNameChange}
-          value={name}
+          onChange={handleChange}
+          value={values.name || ""}
+          required
         />
+        {errors.name && <span className="modal__error">{errors.name}</span>}
       </label>
       <label htmlFor="imageUrl" className="modal__label">
         Image
         <input
-          type="text"
+          type="url"
+          name="imageUrl"
           className="modal__input"
           id="imageUrl"
           placeholder="Image URL"
-          onChange={handleImageUrlChange}
-          value={imageUrl}
+          onChange={handleChange}
+          value={values.imageUrl || ""}
+          pattern="https?://.+"
+          required
         />
+        {errors.imageUrl && (
+          <span className="modal__error">{errors.imageUrl}</span>
+        )}
       </label>
       <fieldset className="modal__radio-buttons">
         <legend className="modal__legend">Select the weather type:</legend>
@@ -73,8 +76,9 @@ export default function AddItemModal({
             name="weather"
             className="modal__radio-input"
             value="hot"
-            onChange={handleWeatherChange}
-            checked={weather === "hot"}
+            onChange={handleChange}
+            checked={values.weather === "hot"}
+            required
           />
           <label htmlFor="hot" className="modal__label modal__label_type_radio">
             Hot
@@ -88,8 +92,8 @@ export default function AddItemModal({
             name="weather"
             className="modal__radio-input"
             value="warm"
-            onChange={handleWeatherChange}
-            checked={weather === "warm"}
+            onChange={handleChange}
+            checked={values.weather === "warm"}
           />
           <label
             htmlFor="warm"
@@ -106,8 +110,8 @@ export default function AddItemModal({
             name="weather"
             className="modal__radio-input"
             value="cold"
-            onChange={handleWeatherChange}
-            checked={weather === "cold"}
+            onChange={handleChange}
+            checked={values.weather === "cold"}
           />
           <label
             htmlFor="cold"

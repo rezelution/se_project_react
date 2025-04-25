@@ -1,41 +1,25 @@
 import "./ModalWithForm.css";
-import closeBtn from "../../assets/modal_close_button.png";
+import Modal from "../Modal/Modal.jsx";
 
-function ModalWithForm({
-  children,
-  buttonText,
-  title,
-  isOpen,
-  handleCloseClick,
-  onSubmit,
-  isValid,
-}) {
+function ModalWithForm({ name, onClose, isOpen, ...props }) {
   return (
-    <div className={`modal ${isOpen && "modal__opened"}`}>
-      <div className="modal__content">
-        <h2 className="modal__title">{title}</h2>
+    <Modal name={name} onClose={onClose} isOpen={isOpen}>
+      <h2 className="modal__title">{props.title}</h2>
+
+      <form onSubmit={props.onSubmit} className="modal__form">
+        {props.children}
         <button
-          onClick={handleCloseClick}
-          type="button"
-          className="modal__close"
+          type="submit"
+          className={`modal__submit ${
+            props.isValid ? "modal__submit_valid" : "modal__submit_invalid"
+          }`}
+          disabled={!props.isValid}
         >
-          <img src={closeBtn} alt="Close" />
+          {" "}
+          {props.buttonText}{" "}
         </button>
-        <form onSubmit={onSubmit} className="modal__form">
-          {children}
-          <button
-            type="submit"
-            className={`modal__submit ${
-              isValid ? "modal__submit_valid" : "modal__submit_invalid"
-            }`}
-            disabled={!isValid}
-          >
-            {" "}
-            {buttonText}{" "}
-          </button>
-        </form>
-      </div>
-    </div>
+      </form>
+    </Modal>
   );
 }
 

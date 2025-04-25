@@ -11,7 +11,7 @@
   visibility: hidden;
 }
 
-.modal__close {
+.modal__close-btn {
   position: absolute;
   top: 20px;
   right: 28px;
@@ -49,7 +49,7 @@
 
 .modal__label {
   margin: 0;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   line-height: 20px;
 }
 
@@ -131,4 +131,13 @@
 .modal__submit_invalid {
   background-color: rgba(0, 0, 0, 0.3);
   cursor: not-allowed;
+}
+
+.modal__error {
+  color: #ff4d00;
+  font-family: var(--font-family-cabinet);
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-bold);
+  display: block;
+  margin-top: 5px;
 }

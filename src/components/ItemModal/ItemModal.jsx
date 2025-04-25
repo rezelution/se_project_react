@@ -1,33 +1,25 @@
+import "../ModalWithForm/ModalWithForm.css";
 import "./ItemModal.css";
-import closeBtn from "../../assets/modal_close_button_white.png";
+import Modal from "../Modal/Modal";
 
-function ItemModal({ isOpen, handleCloseClick, card, handleDeleteClick }) {
+function ItemModal({ isOpen, onClose, card, onDeleteClick }) {
   return (
-    <div className={`itemModal ${isOpen && "itemModal__opened"}`}>
-      <div className="itemModal__content">
-        <button
-          onClick={handleCloseClick}
-          type="button"
-          className="itemModal__close"
-        >
-          <img src={closeBtn} alt="Close" />
-        </button>
-        <img src={card.imageUrl} alt={card.name} className="itemModal__image" />
-        <div className="itemModal__footer">
-          <div>
-            <h2 className="itemModal__caption">{card.name}</h2>
-            <p className="itemModal__weather">Weather: {card.weather}</p>
-          </div>
-          <button
-            onClick={handleDeleteClick}
-            type="button"
-            className="itemModal__delete-btn"
-          >
-            Delete Item
-          </button>
+    <Modal name="item" isOpen={isOpen} onClose={onClose}>
+      <img src={card.imageUrl} alt={card.name} className="itemModal__image" />
+      <div className="itemModal__footer">
+        <div>
+          <h2 className="itemModal__caption">{card.name}</h2>
+          <p className="itemModal__weather">Weather: {card.weather}</p>
         </div>
+        <button
+          onClick={onDeleteClick}
+          type="button"
+          className="itemModal__delete-btn"
+        >
+          Delete Item
+        </button>
       </div>
-    </div>
+    </Modal>
   );
 }
 
