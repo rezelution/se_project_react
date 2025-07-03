@@ -26,7 +26,7 @@ import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LogInModal from "../LogInModal/LogInModal";
 import ProtectedRoute from "../ProtectedRoute";
-import AppContext from "../context/AppContext";
+import AppContext from "../../contexts/AppContext";
 import { checkToken } from "../../utils/auth";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
