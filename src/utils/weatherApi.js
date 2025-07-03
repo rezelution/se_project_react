@@ -20,9 +20,6 @@ export const filterWeatherData = (data) => {
 };
 
 const isDay = ({ sunrise, sunset }, now) => {
-  console.log("Sunrise:", new Date(sunrise * 1000).toLocaleTimeString());
-  console.log("Sunset:", new Date(sunset * 1000).toLocaleTimeString());
-  console.log("Current time:", new Date(now).toLocaleTimeString());
   return sunrise * 1000 < now && now < sunset * 1000;
 };
 

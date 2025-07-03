@@ -1,0 +1,7 @@
+.modal__label_avatar {
+  margin: 24px 0 4px;
+  font-family: var(--font-family-cabinet);
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-bold);
+  line-height: 20px;
+}

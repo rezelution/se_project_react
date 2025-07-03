@@ -2,10 +2,16 @@ import "./Header.css";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 //images need to be added this way
 import logo from "../../assets/Logo.svg";
-import avatar from "../../assets/avatar.png";
 import { Link } from "react-router-dom";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({
+  handleAddClick,
+  weatherData,
+  isLoggedIn,
+  handleLoginClick,
+  handleRegisterClick,
+  currentUser,
+}) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -20,23 +26,50 @@ function Header({ handleAddClick, weatherData }) {
         {currentDate}, {weatherData.city}
       </p>
       <ToggleSwitch className="header__toggleSwitch" />
-      <button
-        onClick={handleAddClick}
-        type="button"
-        className="header__add-clothes-btn"
-      >
-        + Add clothes
-      </button>
-      <Link to="/profile" className="header__link">
-        <div className="header__user-container">
-          <p className="header__username">Terrence Tegegne</p>
-          <img
-            className="header__avatar"
-            src={avatar}
-            alt="Terrence Tegegne"
-          ></img>
+      {isLoggedIn ? (
+        <div className="header__button_group">
+          <button
+            onClick={handleAddClick}
+            type="button"
+            className="header__add-clothes-btn"
+          >
+            + Add clothes
+          </button>
+          <Link to="/profile" className="header__link">
+            <div className="header__user-container">
+              <p className="header__username">{currentUser.name}</p>
+              {currentUser.imageUrl ? (
+                <img
+                  className="header__avatar"
+                  src={currentUser.imageUrl}
+                  alt={currentUser.name}
+                />
+              ) : (
+                <div className="header__avatar-fallback">
+                  {currentUser && currentUser.name && currentUser?.name[0]}
+                </div>
+              )}
+            </div>
+          </Link>
         </div>
-      </Link>
+      ) : (
+        <div>
+          <button
+            onClick={handleRegisterClick}
+            type="button"
+            className="header__signUp-btn"
+          >
+            Sign Up
+          </button>
+          <button
+            onClick={handleLoginClick}
+            type="button"
+            className="header__logIn-btn"
+          >
+            Log In
+          </button>
+        </div>
+      )}
     </header>
   );
 }

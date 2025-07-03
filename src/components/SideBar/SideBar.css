@@ -1,12 +1,29 @@
+.sidebar__username,
+.sidebar__buttons {
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-main);
+  line-height: 1;
+}
+
 .sidebar {
   display: flex;
   justify-content: flex-start;
+  flex-direction: column;
+}
+
+.sidebar__UserGroup {
+  display: flex;
+  flex-direction: row;
   align-items: center;
 }
 
 .sidebar__avatar {
   width: 56px;
   margin-right: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background: transparent;
+  border-radius: 50px;
 }
 
 .sidebar__username {
@@ -15,4 +32,19 @@
   font-family: var(--font-family-main);
   margin: 0;
   width: 157px;
+}
+
+.sidebar__buttons {
+  display: flex;
+  margin-top: 24px;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.sidebar__editProfile {
+  border-style: none;
+  background-color: transparent;
+  cursor: pointer;
 }

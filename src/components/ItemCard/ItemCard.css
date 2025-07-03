@@ -14,13 +14,12 @@
   background-color: #fff;
   margin: 0;
   font-family: var(--font-family-cabinet);
-  font-size: var(--font-size-l);
+  font-size: var(--font-size-m);
   font-weight: var(--font-weight-bold);
   white-space: nowrap;
   display: inline;
   border-radius: 4px;
-  position: absolute;
-  top: 15px;
+
   color: rgba(0, 0, 0, 0.6);
 }
 
@@ -30,4 +29,16 @@
   width: 100%;
   border-radius: 19px;
   border: 1px solid;
+}
+
+.ItemCard__title_group {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  top: 15px;
+}
+
+.ItemCard__likeIcon {
+  width: 18px;
+  top: 15px;
 }
