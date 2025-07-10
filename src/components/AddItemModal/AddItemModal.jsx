@@ -1,5 +1,6 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
+import { useEffect } from "react";
 
 export default function AddItemModal({
   isOpen,
@@ -8,6 +9,12 @@ export default function AddItemModal({
 }) {
   const { values, handleChange, errors, isValid, resetForm } =
     useFormAndValidation();
+
+  useEffect(() => {
+    if (isOpen) {
+      resetForm();
+    }
+  }, [isOpen, resetForm]);
 
   const handleSubmit = (e) => {
     if (!e.target.checkValidity()) {
@@ -21,7 +28,6 @@ export default function AddItemModal({
         imageUrl: values.imageUrl,
         weather: values.weather,
       });
-      resetForm();
     }
   };
 

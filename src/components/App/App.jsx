@@ -1,19 +1,20 @@
 import { useState, useEffect } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import ItemModal from "../ItemModal/ItemModal";
-import { getWeather } from "../../utils/weatherApi";
-import { coordinates } from "../../utils/constants";
-import { APIkey } from "../../utils/constants";
-import { filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
-import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import * as auth from "../../utils/auth";
 import Profile from "../Profile/Profile";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
+import LogInModal from "../LogInModal/LogInModal";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
+
+import { getWeather } from "../../utils/weatherApi";
+import { filterWeatherData } from "../../utils/weatherApi";
 import {
   getItems,
   addItems,
@@ -22,14 +23,18 @@ import {
   addCardLike,
   removeCardLike,
 } from "../../utils/api";
-import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
-import RegisterModal from "../RegisterModal/RegisterModal";
-import LogInModal from "../LogInModal/LogInModal";
-import ProtectedRoute from "../ProtectedRoute";
-import AppContext from "../../contexts/AppContext";
+
+import { coordinates } from "../../utils/constants";
+import { APIkey } from "../../utils/constants";
+
 import { checkToken } from "../../utils/auth";
+import * as auth from "../../utils/auth";
+
+import AppContext from "../../contexts/AppContext";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import EditProfileModal from "../EditProfileModal/EditProfileModal";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+
+import ProtectedRoute from "../ProtectedRoute";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -47,7 +52,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userLoading, setUserLoading] = useState(true);
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState({});
 
   const navigate = useNavigate();
   const isOwn = currentUser && selectedCard.owner === currentUser._id;
@@ -83,7 +88,9 @@ function App() {
         );
         closeActiveModal();
       })
-      .catch(console.error)
+      .catch((error) => {
+        console.error("Failed to delete the item:", error);
+      })
       .finally(() => {
         setIsLoading(false);
       });
@@ -194,7 +201,6 @@ function App() {
   };
 
   const handleLogin = ({ email, password }) => {
-    console.log("handleLogin called");
     if (!email || !password) {
       return;
     }
@@ -314,6 +320,7 @@ function App() {
                       handleAddClick={handleAddClick}
                       handleCardLike={handleCardLike}
                       currentUser={currentUser}
+                      isLoggedIn={isLoggedIn}
                     />
                   }
                 />
@@ -330,6 +337,7 @@ function App() {
                         handleEditProfileClick={handleEditProfileClick}
                         handleCardLike={handleCardLike}
                         handleLogOut={handleLogOut}
+                        isLoggedIn={isLoggedIn}
                       />
                     </ProtectedRoute>
                   }

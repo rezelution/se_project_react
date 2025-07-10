@@ -1,6 +1,7 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import "./RegisterModal.css";
+import { useEffect } from "react";
 
 export default function RegisterModal({
   isOpen,
@@ -11,6 +12,12 @@ export default function RegisterModal({
   const { values, handleChange, errors, isValid, resetForm } =
     useFormAndValidation();
 
+  useEffect(() => {
+    if (isOpen) {
+      resetForm();
+    }
+  }, [isOpen, resetForm]);
+
   const handleSubmit = (e) => {
     const placeholderUrl = `https://ui-avatars.com/api/?name=${values.name[0]}&background=random`;
 
@@ -20,14 +27,12 @@ export default function RegisterModal({
     }
     e.preventDefault();
     if (isValid) {
-      console.log("Form values:", values);
       handleRegistration({
         email: values.email,
         password: values.password,
         name: values.name,
         imageUrl: !values.imageUrl?.trim() ? placeholderUrl : values.imageUrl,
       });
-      resetForm();
     }
   };
 

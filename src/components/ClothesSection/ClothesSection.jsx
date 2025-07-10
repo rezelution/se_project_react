@@ -8,6 +8,7 @@ function ClothesSection({
   isOwn,
   currentUser,
   handleCardLike,
+  isLoggedIn,
 }) {
   return (
     <div className="clothes-section">
@@ -35,6 +36,7 @@ function ClothesSection({
                 isOwn={isOwn}
                 handleCardLike={handleCardLike}
                 currentUser={currentUser}
+                isLoggedIn={isLoggedIn}
               />
             );
           })}

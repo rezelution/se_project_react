@@ -1,5 +1,6 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
+import { useEffect } from "react";
 
 export default function EditProfileModal({
   isOpen,
@@ -7,20 +8,26 @@ export default function EditProfileModal({
   handleUpdateProfile,
   currentUser,
 }) {
-  const { values, handleChange, errors, isValid, resetForm } =
+  const { values, handleChange, errors, isValid, resetForm, setValues } =
     useFormAndValidation();
+
+  useEffect(() => {
+    if (isOpen && currentUser) {
+      setValues({
+        name: currentUser.name || "",
+        imageUrl: currentUser.imageUrl || "",
+      });
+    }
+  }, [isOpen, currentUser, setValues]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (!e.target.checkValidity()) return;
 
-    const updatedProfile = {
-      name: values.name || currentUser.name,
-      imageUrl: values.imageUrl?.trim()
-        ? values.imageUrl
-        : currentUser.imageUrl,
-    };
+    const updatedProfile = {};
+    if (values.name?.trim()) updatedProfile.name = values.name.trim();
+    if (values.imageUrl?.trim())
+      updatedProfile.imageUrl = values.imageUrl.trim();
 
     if (isValid) {
       console.log("Updated profile values:", updatedProfile);
@@ -52,6 +59,7 @@ export default function EditProfileModal({
         />
         {errors.name && <span className="modal__error">{errors.name}</span>}
       </label>
+
       <label htmlFor="imageUrl" className="modal__label_avatar">
         Avatar URL
         <input
@@ -62,7 +70,6 @@ export default function EditProfileModal({
           placeholder="Avatar URL"
           onChange={handleChange}
           value={values.imageUrl || ""}
-          pattern="https?://.+"
         />
         {errors.imageUrl && (
           <span className="modal__error">{errors.imageUrl}</span>

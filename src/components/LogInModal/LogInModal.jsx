@@ -1,5 +1,6 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
+import { useEffect } from "react";
 
 export default function LogInModal({
   isOpen,
@@ -9,6 +10,12 @@ export default function LogInModal({
 }) {
   const { values, handleChange, errors, isValid, resetForm } =
     useFormAndValidation();
+
+  useEffect(() => {
+    if (isOpen) {
+      resetForm();
+    }
+  }, [isOpen, resetForm]);
 
   const handleSubmit = (e) => {
     if (!e.target.checkValidity()) {
@@ -21,7 +28,6 @@ export default function LogInModal({
         email: values.email,
         password: values.password,
       });
-      resetForm();
     }
   };
 
