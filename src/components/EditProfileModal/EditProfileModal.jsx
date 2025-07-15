@@ -20,6 +20,13 @@ export default function EditProfileModal({
     }
   }, [isOpen, currentUser, setValues]);
 
+  //e represents a form submission event
+  //then it stops the default behavior of reloading the page
+  //then it checks that all form fields are entered
+  //? optional chaining is used here so we are only sending if values exist
+  //trim removes any spaces
+  //then checks if everything is ok before sending
+  //then sends everything and resets form
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!e.target.checkValidity()) return;

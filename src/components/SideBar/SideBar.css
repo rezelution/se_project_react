@@ -20,6 +20,7 @@
 
 .sidebar__avatar {
   width: 56px;
+  height: 56px;
   margin-right: 16px;
   border: 1px solid rgba(0, 0, 0, 0.5);
   background: transparent;

@@ -25,7 +25,7 @@ function ClothesSection({
       <ul className="clothes-section__list">
         {clothingItems
           .filter((item) => {
-            return currentUser?._id === item.owner;
+            return currentUser?._id === item.owner; //this is using optional chaining and is checking ._id of owner (if its null or undefined won't cause app to crash)
           })
           .map((item) => {
             return (

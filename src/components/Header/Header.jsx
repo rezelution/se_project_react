@@ -12,6 +12,8 @@ function Header({
   handleRegisterClick,
   currentUser,
 }) {
+  //creates a new date object with current date an time
+  //the localstring converts the date into a formatted string using your default local that was et in your browser
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
