@@ -1,7 +1,7 @@
 .modal_type_item .modal__content {
   max-width: 498px;
   max-height: 610px;
-  padding: 0;  
+  padding: 0;
   border-radius: 16px;
   overflow: hidden;
 }
@@ -16,6 +16,7 @@
   height: 498px;
   margin-bottom: 20px;
   display: block;
+  object-fit: cover;
 }
 
 .itemModal__footer {
