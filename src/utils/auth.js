@@ -1,6 +1,9 @@
 import { checkResponse } from "./api";
 
-export const BASE_URL = "http://localhost:3001";
+export const BASE_URL =
+  import.meta.env.MODE === "production"
+    ? "https://api.heatcheck.clicklab.com"
+    : "http://localhost:3001";
 
 export const register = (email, password, name, imageUrl) => {
   return fetch(`${BASE_URL}/signup`, {

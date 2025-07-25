@@ -1,5 +1,7 @@
 {
   "name": "se_project_react",
+  "homepage": "https://heatcheck.blinklab.com",
+
   "private": true,
   "version": "0.0.0",
   "type": "module",
