@@ -162,18 +162,26 @@ function App() {
   };
 
   const handleUpdateProfile = ({ name, imageUrl }) => {
-    if (!name && !imageUrl) {
+    if (!name && imageUrl === undefined) {
       console.error("Missing required fields:", { name, imageUrl });
       return;
     }
 
     const data = {
       name: name || currentUser.name,
-      imageUrl: imageUrl || currentUser.imageUrl,
+      imageUrl:
+        imageUrl === "" || imageUrl === undefined // user cleared the field
+          ? null // `null` to indicate fallback should be used
+          : imageUrl ?? currentUser.imageUrl,
     };
+    console.log("imageUrl value:", imageUrl);
+    console.log("imageUrl === '' ?", imageUrl === "");
+    console.log("currentUser.imageUrl:", currentUser.imageUrl);
+    console.log("Data being sent:", data);
     const token = localStorage.getItem("jwt");
 
     setIsLoading(true);
+    console.log("Final data object being sent:", data);
     return updateProfile(data, token)
       .then((data) => {
         console.log("Server response:", data.data);
@@ -181,7 +189,7 @@ function App() {
         closeActiveModal();
       })
       .catch((error) => {
-        console.error("Error adding user:", error);
+        console.error("Error updating user:", error);
       })
       .finally(() => {
         setIsLoading(false);

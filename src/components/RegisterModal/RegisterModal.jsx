@@ -19,8 +19,6 @@ export default function RegisterModal({
   }, [isOpen, resetForm]);
 
   const handleSubmit = (e) => {
-    const placeholderUrl = `https://ui-avatars.com/api/?name=${values.name[0]}&background=random`;
-
     if (!e.target.checkValidity()) {
       e.preventDefault();
       return;
@@ -31,7 +29,7 @@ export default function RegisterModal({
         email: values.email,
         password: values.password,
         name: values.name,
-        imageUrl: !values.imageUrl?.trim() ? placeholderUrl : values.imageUrl,
+        imageUrl: values.imageUrl,
       });
     }
   };

@@ -4,11 +4,17 @@ function SideBar({ currentUser, handleEditProfileClick, handleLogOut }) {
   return (
     <div className="sidebar">
       <div className="sidebar__UserGroup">
-        <img
-          className="sidebar__avatar"
-          src={currentUser.imageUrl}
-          alt={currentUser.imageUrl}
-        />
+        {currentUser.imageUrl?.trim() ? (
+          <img
+            className="sidebar__avatar"
+            src={currentUser.imageUrl}
+            alt={currentUser.name}
+          />
+        ) : (
+          <div className="sidebar__avatar-fallback">
+            {currentUser?.name?.[0]}
+          </div>
+        )}
         <p className="sidebar__username">{currentUser.name}</p>
       </div>
       <div className="sidebar__buttons">

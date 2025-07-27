@@ -40,7 +40,7 @@ function Header({
           <Link to="/profile" className="header__link">
             <div className="header__user-container">
               <p className="header__username">{currentUser.name}</p>
-              {currentUser.imageUrl ? (
+              {currentUser.imageUrl?.trim() ? (
                 <img
                   className="header__avatar"
                   src={currentUser.imageUrl}
@@ -48,7 +48,7 @@ function Header({
                 />
               ) : (
                 <div className="header__avatar-fallback">
-                  {currentUser && currentUser.name && currentUser?.name[0]}
+                  {currentUser?.name?.[0]}
                 </div>
               )}
             </div>
