@@ -1,6 +1,6 @@
 const baseUrl =
   import.meta.env.MODE === "production"
-    ? "https://api.heatcheck.clicklab.com"
+    ? "https://api.heatcheck.blinklab.com"
     : "http://localhost:3001";
 
 function checkResponse(res) {
