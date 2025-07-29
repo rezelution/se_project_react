@@ -161,23 +161,20 @@ function App() {
       });
   };
 
-  const handleUpdateProfile = ({ name, imageUrl }) => {
-    if (!name && imageUrl === undefined) {
-      console.error("Missing required fields:", { name, imageUrl });
+  const handleUpdateProfile = ({ name, avatar }) => {
+    if (!name && avatar === undefined) {
+      console.error("Missing required fields:", { name, avatar });
       return;
     }
 
     const data = {
       name: name || currentUser.name,
-      imageUrl:
-        imageUrl === "" || imageUrl === undefined // user cleared the field
+      avatar:
+        avatar === "" || avatar === undefined // user cleared the field
           ? null // `null` to indicate fallback should be used
-          : imageUrl ?? currentUser.imageUrl,
+          : avatar ?? currentUser.avatar,
     };
-    console.log("imageUrl value:", imageUrl);
-    console.log("imageUrl === '' ?", imageUrl === "");
-    console.log("currentUser.imageUrl:", currentUser.imageUrl);
-    console.log("Data being sent:", data);
+
     const token = localStorage.getItem("jwt");
 
     setIsLoading(true);
@@ -237,9 +234,9 @@ function App() {
   //once the user is successfully registered it runs the next steps
   //closes the modal, updates the state to store the user, and logs user in, then navigates to homepage
   //if there is an error ot logs it
-  const handleRegistration = ({ email, password, name, imageUrl }) => {
+  const handleRegistration = ({ email, password, name, avatar }) => {
     auth
-      .register(email, password, name, imageUrl)
+      .register(email, password, name, avatar)
       .then((data) => {
         closeActiveModal();
         setCurrentUser(data.data);
@@ -291,8 +288,8 @@ function App() {
       setUserLoading(true);
       checkToken(jwt)
         .then((response) => {
-          const { name, email, imageUrl, _id } = response.data;
-          setCurrentUser({ name, email, imageUrl, _id });
+          const { name, email, avatar, _id } = response.data;
+          setCurrentUser({ name, email, avatar, _id });
           setIsLoggedIn(true);
           setUserLoading(false);
         })

@@ -40,10 +40,10 @@ function Header({
           <Link to="/profile" className="header__link">
             <div className="header__user-container">
               <p className="header__username">{currentUser.name}</p>
-              {currentUser.imageUrl?.trim() ? (
+              {currentUser.avatar?.trim() ? (
                 <img
                   className="header__avatar"
-                  src={currentUser.imageUrl}
+                  src={currentUser.avatar}
                   alt={currentUser.name}
                 />
               ) : (

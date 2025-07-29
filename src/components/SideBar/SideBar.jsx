@@ -4,10 +4,10 @@ function SideBar({ currentUser, handleEditProfileClick, handleLogOut }) {
   return (
     <div className="sidebar">
       <div className="sidebar__UserGroup">
-        {currentUser.imageUrl?.trim() ? (
+        {currentUser.avatar?.trim() ? (
           <img
             className="sidebar__avatar"
-            src={currentUser.imageUrl}
+            src={currentUser.avatar}
             alt={currentUser.name}
           />
         ) : (

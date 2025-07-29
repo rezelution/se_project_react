@@ -15,7 +15,7 @@ export default function EditProfileModal({
     if (isOpen && currentUser) {
       setValues({
         name: currentUser.name || "",
-        imageUrl: currentUser.imageUrl || "",
+        avatar: currentUser.avatar || "",
       });
     }
   }, [isOpen, currentUser, setValues]);
@@ -33,8 +33,7 @@ export default function EditProfileModal({
 
     const updatedProfile = {};
     if (values.name?.trim()) updatedProfile.name = values.name.trim();
-    if (values.imageUrl?.trim())
-      updatedProfile.imageUrl = values.imageUrl.trim();
+    if (values.avatar?.trim()) updatedProfile.avatar = values.avatar.trim();
 
     if (isValid) {
       console.log("Updated profile values:", updatedProfile);
@@ -71,16 +70,14 @@ export default function EditProfileModal({
         Avatar URL
         <input
           type="url"
-          name="imageUrl"
+          name="avatar"
           className="modal__input"
-          id="editProfileImageUrl"
+          id="editProfileAvatarl"
           placeholder="Avatar URL"
           onChange={handleChange}
-          value={values.imageUrl || ""}
+          value={values.avatar || ""}
         />
-        {errors.imageUrl && (
-          <span className="modal__error">{errors.imageUrl}</span>
-        )}
+        {errors.avatar && <span className="modal__error">{errors.avatar}</span>}
       </label>
     </ModalWithForm>
   );

@@ -29,7 +29,7 @@ export default function RegisterModal({
         email: values.email,
         password: values.password,
         name: values.name,
-        imageUrl: values.imageUrl,
+        avatar: values.avatar,
       });
     }
   };
@@ -94,17 +94,15 @@ export default function RegisterModal({
         Avatar URL
         <input
           type="url"
-          name="imageUrl"
+          name="avatar"
           className="modal__input"
           id="registrationImageUrl"
           placeholder="Avatar URL"
           onChange={handleChange}
-          value={values.imageUrl || ""}
+          value={values.avatar || ""}
           pattern="https?://.+"
         />
-        {errors.imageUrl && (
-          <span className="modal__error">{errors.imageUrl}</span>
-        )}
+        {errors.avatar && <span className="modal__error">{errors.avatar}</span>}
       </label>
     </ModalWithForm>
   );
